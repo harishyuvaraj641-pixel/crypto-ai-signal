@@ -1,6 +1,6 @@
 ﻿# crypto-ai-signal
  DEVELOPER: V S Harish yuvaraj
-# 📈 Crypto AI Signal Dashboard
+# 📈 Crypto AI Signal Bot
 
 A professional-grade, full-stack cryptocurrency trading dashboard that combines real-time market data with advanced technical indicators and AI-driven predictive analysis.
 
