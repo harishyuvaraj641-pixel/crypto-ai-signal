@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-900 text-gray-100 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(6, 182, 212, 0.04) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { @apply bg-dark-800; }
+  ::-webkit-scrollbar-thumb { @apply bg-dark-400 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-accent-blue; }
+}
+
+@layer components {
+  /* Glass card */
+  .glass-card {
+    @apply bg-dark-700/60 backdrop-blur-sm border border-white/5 rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-200 hover:border-accent-blue/20 hover:bg-dark-600/60;
+  }
+
+  /* Signal badges */
+  .badge-buy {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold
+           bg-buy/20 text-buy border border-buy/30;
+  }
+  .badge-sell {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold
+           bg-sell/20 text-sell border border-sell/30;
+  }
+  .badge-hold {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold
+           bg-hold/20 text-hold border border-hold/30;
+  }
+
+  /* Input fields */
+  .input-dark {
+    @apply w-full bg-dark-800 border border-white/10 rounded-lg px-3 py-2 text-sm
+           text-gray-200 placeholder-gray-500
+           focus:outline-none focus:ring-1 focus:ring-accent-blue/50 focus:border-accent-blue/50
+           transition-all duration-150;
+  }
+
+  /* Select field */
+  .select-dark {
+    @apply input-dark cursor-pointer appearance-none;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm
+           bg-accent-blue hover:bg-blue-500 text-white
+           transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm
+           bg-sell hover:bg-red-500 text-white
+           transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply flex items-center justify-center gap-2 px-3 py-2 rounded-lg font-medium text-sm
+           text-gray-400 hover:text-gray-200 hover:bg-white/5
+           transition-all duration-150;
+  }
+
+  /* Stat row */
+  .stat-row {
+    @apply flex justify-between items-center py-1.5 border-b border-white/5 last:border-0;
+  }
+
+  .stat-label {
+    @apply text-xs text-gray-500 font-medium uppercase tracking-wide;
+  }
+
+  .stat-value {
+    @apply text-sm font-mono text-gray-200 font-medium;
+  }
+
+  /* Mono values */
+  .mono {
+    @apply font-mono;
+  }
+
+  /* Positive / negative */
+  .text-pos { @apply text-buy; }
+  .text-neg { @apply text-sell; }
+  .text-neu { @apply text-hold; }
+
+  /* Glow effects */
+  .glow-buy {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+  }
+  .glow-sell {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+  }
+  .glow-hold {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+  }
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  /* Status dot */
+  .dot-live {
+    @apply w-2 h-2 rounded-full bg-buy animate-pulse;
+  }
+  .dot-offline {
+    @apply w-2 h-2 rounded-full bg-gray-500;
+  }
+  .dot-connecting {
+    @apply w-2 h-2 rounded-full bg-hold animate-pulse;
+  }
+}
+
+/* Chart canvas override */
+canvas {
+  max-width: 100%;
+}
+
+/* Countdown ring animation */
+@keyframes countdown-ring {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 283; }
+}
+
+/* Number pulse on update */
+@keyframes numPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.num-update {
+  animation: numPulse 0.4s ease;
+}

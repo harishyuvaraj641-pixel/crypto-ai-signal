@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+websockets
+httpx
+pandas
+numpy
+aiosqlite
+python-dotenv
+pydantic
+pydantic-settings
+sse-starlette
+python-multipart
+aiofiles
+# pandas-ta is optional — the app uses numpy/pandas fallback indicators if not installed
+# To install: pip install git+https://github.com/twopirllc/pandas-ta
